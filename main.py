@@ -86,6 +86,29 @@ def open_index():
     print(f"Index file {file_name} opened successfully.")
 
 
+def load():
+    """Load an existing B-tree from the current index file."""
+    global btree
+
+    if btree is None:
+        print("No B-tree file is open. Please open a file first.")
+        return
+
+    try:
+        # Load the header and initialize the tree structure
+        btree.load_header()
+
+        if btree.root:
+            print("B-tree loaded successfully.")
+        else:
+            print("B-tree loaded, but it is currently empty.")
+
+    except ValueError as e:
+        print(f"Error while loading index file: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+
 def insert():
     """Insert a key into the current B-tree file"""
     global btree
@@ -110,15 +133,17 @@ def quit_program():
 
 # User commands
 while True:
-    user_input = input("Which command? (create/open/insert/quit): ").strip().lower()
+    user_input = input("Which command? (create/open/load/insert/quit): ").strip().lower()
 
     if user_input == 'create':
         create_index()
     elif user_input == 'open':
         open_index()
+    elif user_input == 'load':
+        load()
     elif user_input == 'insert':
         insert()
     elif user_input == 'quit':
         quit_program()
     else:
-        print("Invalid command. Please type 'create', 'open', 'insert', or 'quit'.")
+        print("Invalid command. Please type 'create', 'open', 'load', 'insert', or 'quit'.")

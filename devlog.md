@@ -1,4 +1,4 @@
-# **Devlog: OS-Project-3 - Initial Setup and Source Code Development**
+# **Devlog: OS-Project-3 
 
 ## **Day 1: Project Initialization and Source Code Setup**
 
