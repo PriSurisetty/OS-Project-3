@@ -1,4 +1,4 @@
-# **Devlog: OS-Project-3 
+# **Devlog: OS-Project-3**
 
 ## **Day 1: Project Initialization and Source Code Setup**
 
@@ -52,4 +52,25 @@
     - The file creation, file opening, insertion, and searching work as expected.
     - The system correctly prompts for the file only when necessary and allows for continued operations without repeatedly asking for the file name once it's been opened or created.
 
+## **Day 2: Adding the rest of the commands**
+
+### **What was Implemented**
+- **`print()`**: The function was implemented to display the current state of the B-tree.
+- **`load()`**: I added the ability to load data from a text file into the B-tree. The function reads the file line by line, splitting each line by commas, and inserts the key-value pairs into the B-tree.
+    - **Implementation details**: 
+        - It first checks if the B-tree file is open. 
+        - It prompts the user for the text file name and attempts to open it.
+        - If a key from the file already exists in the B-tree, it prints a warning and does not insert the duplicate key.
+        - If successful, it inserts the key-value pairs into the B-tree and prints a confirmation message.
+    - **Testing**: I tested the `load()` function and found that it correctly loads data from a file and inserts it into the B-tree, preventing duplicate keys from being added.
+
+- **`extract()`**: I implemented a function to extract all key-value pairs from the B-tree and write them to a specified file. This function traverses the B-tree and writes all the key-value pairs to a new file.
+
+- **Functionality Testing**: I tested the newly implemented commands (`print()`, `load()`, `extract()`) and found that they all worked as expected. The program now handles loading data from a text file, printing the B-tree, and extracting data into a file.
+
 ---
+
+### **Issues Encountered**
+- **Duplicate Key Handling**: There was an issue with the `load()` function where duplicate keys in the text file were causing warnings to appear. This was resolved by checking for the existence of the key before insertion.
+- **Error Handling**: Some error handling was missing in the early implementation, but I added more checks for file existence, and I also handled potential exceptions that might occur during file reading.
+
